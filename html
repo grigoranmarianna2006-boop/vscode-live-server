@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Cloud Calculator</title>
+    <style>
+        body { display: flex; justify-content: center; align-items: center; height: 100vh; background: #121212; font-family: sans-serif; }
+        .calc { background: #1e1e1e; padding: 20px; border-radius: 20px; box-shadow: 0 20px 50px rgba(0,0,0,0.5); }
+        #res { width: 100%; height: 60px; font-size: 32px; text-align: right; margin-bottom: 20px; background: none; border: none; color: white; outline: none; }
+        .btns { display: grid; grid-template-columns: repeat(4, 70px); gap: 10px; }
+        button { height: 70px; border-radius: 35px; border: none; font-size: 24px; cursor: pointer; background: #333; color: white; transition: 0.3s; }
+        button:hover { background: #444; }
+        .op { background: #ff9f0a; }
+        .op:hover { background: #ffb340; }
+        .eq { background: #34c759; grid-column: span 2; }
+    </style>
+</head>
+<body>
+    <div class="calc">
+        <input type="text" id="res" readonly placeholder="0">
+        <div class="btns">
+            <button onclick="f('')" style="background:#a5a5a5; color:black">C</button>
+            <button onclick="f('/')" class="op">÷</button>
+            <button onclick="f('*')" class="op">×</button>
+            <button onclick="f('-')" class="op">−</button>
+            <button onclick="f('7')">7</button><button onclick="f('8')">8</button><button onclick="f('9')">9</button>
+            <button onclick="f('+')" class="op">+</button>
+            <button onclick="f('4')">4</button><button onclick="f('5')">5</button><button onclick="f('6')">6</button>
+            <button onclick="e()" class="eq">=</button>
+            <button onclick="f('1')">1</button><button onclick="f('2')">2</button><button onclick="f('3')">3</button>
+            <button onclick="f('0')" style="grid-column: span 2; border-radius: 35px;">0</button>
+            <button onclick="f('.')">.</button>
+        </div>
+    </div>
+    <script>
+        let r = document.getElementById('res');
+        function f(v) { v=='' ? r.value='' : r.value+=v; }
+        function e() { try { r.value = eval(r.value); } catch { r.value = 'Error'; } }
+    </script>
+</body>
+</html>
